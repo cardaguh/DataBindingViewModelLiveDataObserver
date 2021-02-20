@@ -4,19 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.databinding.DataBindingUtil
+import co.cyclopsapps.viewmodellivedatadatabinding.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val buttonAdd = findViewById<Button>(R.id.button)
-        val textAdd = findViewById<TextView>(R.id.textView2)
         var count = 0
 
-        buttonAdd.setOnClickListener {
+        binding.button.setOnClickListener {
             count++
-            textAdd.text = count.toString()
+            binding.textView2.text = count.toString()
         }
     }
 }
