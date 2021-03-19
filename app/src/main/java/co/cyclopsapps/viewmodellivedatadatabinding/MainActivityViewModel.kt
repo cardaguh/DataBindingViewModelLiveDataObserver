@@ -1,5 +1,6 @@
 package co.cyclopsapps.viewmodellivedatadatabinding
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -7,13 +8,14 @@ import androidx.lifecycle.ViewModel
  * Created by Carlos Daniel Agudelo on 20/02/2021.
  */
 class MainActivityViewModel: ViewModel() {
-    val count = MutableLiveData<Int>()
+    val _count = MutableLiveData<Int>()
+    val count: LiveData<Int> = _count
 
     init {
-        count.value = 0
+        _count.value = 0
     }
 
     fun updateAdd() {
-        count.value = (count.value)?.plus(1)
+        _count.value = (count.value)?.plus(1)
     }
 }
